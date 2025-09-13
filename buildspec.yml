@@ -1,0 +1,29 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      nodejs: 18   # or python: 3.9, java: corretto11 etc.
+    commands:
+      - echo ">>> Installing dependencies"
+      - yum install -y nginx
+
+  pre_build:
+    commands:
+      - echo ">>> Pre-build stage"
+      - echo "Nothing to do here for now"
+
+  build:
+    commands:
+      - echo ">>> Build stage"
+      - echo "Packaging web app files"
+
+  post_build:
+    commands:
+      - echo ">>> Build complete at $(date)"
+
+artifacts:
+  files:
+    -  appspec.yml
+    -  html/**/*
+    -  scripts/**/*
